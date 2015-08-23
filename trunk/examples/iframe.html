@@ -1,0 +1,152 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+
+    <title>IFrame Shim Tests</title>
+
+    <style type="text/css">
+		body { font-size: 14px; font-family: "Helvetica","Arial","Verdana","sans-serif"; line-height: 20px; }
+		fieldset { width: 500px; padding: 10px;}
+		label { float: left; width: 100px; }
+		select { width: 100px; }
+		p { margin-bottom: 10px; }
+		p.caption { font-style: italic; margin: 0;}
+		div.twocol { float: left; width: 300px; }
+		.clear { clear:both; }
+		table { border-collapse: collapse; margin-bottom: 25px;}
+		table th { background-color: #DDD; }
+		table th, table td { border: 1px solid black; padding: 5px; }
+    </style>
+
+  </head>
+  <body>
+
+    <form>
+	<h1>IFrame Shim Tests</h1>
+	
+	<p>This page tests the iframe shim implementation within zVisualizer</p>
+	<br/>
+	
+	
+	<h3>Select</h3>
+	<p>The well known IE6 select bug where this windowed element is drawn on top.
+	zVisualizer uses the standard iframe shim technique.</p>
+	<fieldset>
+		<label for="states">State</label>
+		<select id="states">
+			<option>Alabama</option>
+			<option>Alaska</option>
+			<option>Arizona</option>
+			<option>Arkansas</option>
+			<option>California</option>
+		</select>		
+	</fieldset>
+	</form>
+	<br/>
+	<br/>
+
+
+
+	
+	<h3>Flash</h3>
+	<p>For a flash object to be in the document flow, it must have a wmode other than "window" in the original source.
+	Otherwise, the default wmode of "window" puts the flash object above everything in the document.
+	Since we don't have access to the source, we can try to use the iframe shim technique, which works on some browsers.
+	</p>
+	<table>
+		<tr>
+			<th>Browser</th>
+			<th>Supported</th>
+		</tr>
+		<tr>
+			<td>IE (6/7/8)</td>
+			<td>Yes</td>
+		</tr>
+		<tr>
+			<td>Firefox (2/3/3.5)</td>
+			<td>No</td>
+		</tr>
+		<tr>
+			<td>Safari (3/4)</td>
+			<td>No</td>
+		</tr>
+		<tr>
+			<td>Chrome (1/2)</td>
+			<td>Yes</td>
+		</tr>
+		<tr>
+			<td>Opera (9)</td>
+			<td>No</td>
+		</tr>
+	</table>	
+	<div>		
+		<div class="twocol">		
+		<object width="279" height="84">
+			<param name="movie" value="flash_installed_en_RMR.swf">
+			<param name="wmode" value="transparent" />
+			<embed src="flash_installed_en_RMR.swf" width="279" height="84" wmode="transparent" ></embed>
+		</object>
+		<p class="caption">With wmode</p>
+		</div>	
+		<div class="twocol" style="margin-left: 30px;">
+		<object width="279" height="84">
+			<param name="movie" value="flash_installed_en_RMR.swf">
+			<embed src="flash_installed_en_RMR.swf" width="279" height="84" ></embed>
+		</object>
+		<p class="caption">Without wmode</p>
+		</div>
+	</div>
+	<br class="clear"/>
+	<br/>		
+	
+	
+	
+	
+	<h3>Java Applet</h3>
+	<p>
+	Java applets appear above everything in the document.
+	The iframe shim technique will work on some browsers. 
+	</p>	
+	<table>
+		<tr>
+			<th>Browser</th>
+			<th>Supported</th>
+		</tr>
+		<tr>
+			<td>IE (6/7/8)</td>
+			<td>Yes</td>
+		</tr>
+		<tr>
+			<td>Firefox (2/3/3.5)</td>
+			<td>Yes</td>
+		</tr>
+		<tr>
+			<td>Safari (3/4)</td>
+			<td>No</td>
+		</tr>
+		<tr>
+			<td>Chrome (1/2)</td>
+			<td>Yes</td>
+		</tr>
+		<tr>
+			<td>Opera (9)</td>
+			<td>No</td>
+		</tr>
+	</table>	
+	
+	<object code="Clock.class" type="application/x-java-applet" width="300px" height="300px">
+		<param name="code" value="Clock.class"/>
+		<param name="codetype" value="application/x-java-applet"/>
+		<p>Java Not Installed</p>
+	</object>	
+
+	
+	
+	
+	<script src="../dist/zviz.dist.js" type="text/javascript"></script>
+	
+  </body>
+</html>

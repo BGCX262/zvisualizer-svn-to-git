@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+
+    <title>Stacking Context Examples: IE6 / IE7 test, position:relative</title>
+	<link rel="stylesheet" type="text/css" href="example.css" />
+    <style type="text/css">
+     #div3 { position: relative; top: -300px; width: auto; }
+	 #description { margin-top: -240px; }
+    </style>
+
+  </head>
+  <body>
+
+    <div id="div1">
+      <h1>Division Element #1</h1>
+      <code>position: relative;<br/>
+      z-index: 2;</code>
+    </div>
+
+    <div id="div2">
+      <h1>Division Element #2</h1>
+      <code>position: relative;<br/>
+      z-index: 5;</code>
+    </div>
+
+    <div id="div3">
+
+      <div id="div4">
+        <h1>Division Element #4</h1>
+        <code>position: relative;<br/>
+        z-index: 3;</code>
+      </div>
+
+      <h1>Division Element #3</h1>
+      <code>position: relative;<br/>
+      z-index: (not specified);</code>
+
+      <div id="div5">
+        <h1>Division Element #5</h1>
+        <code>position: relative;<br/>
+        z-index: 4;</code>
+      </div>
+   
+      <div id="div6">
+        <h1>Division Element #6</h1>
+        <code>position: absolute;<br/>
+        z-index: 6;</code>
+      </div>
+
+    </div>
+
+	
+	<div id="description">
+		<h1>IE6 / IE7:</h1> 
+		Merely having positioning creates stacking context, so #div3 behaves like z-index of 0, and all the children are in that context.<br/>
+		#div3 and its children now appear below the green divs.<br/>
+		Note that this still applies regardless of HasLayout.
+	</div>
+	
+	<script src="../dist/zviz.dist.js" type="text/javascript"></script>
+	
+  </body>
+</html>

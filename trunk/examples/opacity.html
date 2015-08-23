@@ -1,0 +1,104 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+
+    <title>Stacking Context Examples: opacity without positioning</title>
+	<link rel="stylesheet" type="text/css" href="example.css" />
+    <style type="text/css">
+  #div0, #div1, #div7, #div8, #div9 {
+	border: 1px dashed #696;
+	padding: 10px;
+	background-color: #cfc;	
+	width: 200px;
+	}		
+	
+		#div0 {  position: absolute; z-index: 0; top: 10px; left: 20px;}
+		#div1 {  position: absolute; z-index: 1; top: 10px; left: 300px; }
+		#div7 {  position: absolute; z-index: 0; top: 260px; left: 20px;}
+		#div8 {  position: absolute; z-index: 1; top: 260px; left: 300px;}
+		#div9 { width: 320px; height: 200px; background-color: #BFC6FF; margin-top: -290px; padding-top:130px;}
+		#div3 {
+			position: static; 
+			margin-top: 0px;
+			margin-left: 110px; 
+			opacity: 0.6; 			
+		}
+		#description { margin-top:60px; }
+
+    </style>
+
+  </head>
+  <body>
+  <div id="div0">
+	<h1>Division Element #0</h1>
+	<code>position: absolute;<br/>
+	z-index: 0;</code>
+  </div>
+	  
+    <div id="div1">
+      <h1>Division Element #1</h1>
+      <code>position: absolute;<br/>
+      z-index: 1;</code>
+    </div>
+
+    <div id="div3">
+
+      <div id="div4">
+        <h1>Division Element #4</h1>
+        <code>position: relative;<br/>
+        z-index: 3;</code>
+      </div>
+
+      <h1>Division Element #3</h1>
+      <code>position: static;<br/>
+      z-index: (not specified);<br/>
+	  opacity: 0.5	  
+	  </code>
+
+      <div id="div5">
+        <h1>Division Element #5</h1>
+        <code>position: relative;<br/>
+        z-index: 4;</code>
+      </div>
+    </div>
+
+      <div id="div7">
+        <h1>Division Element #7</h1>
+        <code>position: absolute;<br/>
+        z-index: 0;</code>
+      </div>
+	  
+      <div id="div8">
+        <h1>Division Element #8</h1>
+        <code>position: absolute;<br/>
+        z-index: 1;</code>
+      </div>
+	  
+      <div id="div9">
+        <h1>Division Element #9</h1>
+        <code>position: static;</code>
+      </div>
+	  
+	<div id="description">
+		<h1>Firefox3+ / Safari3+</h1> 
+		Non-full opacity will implicitly create a stacking context.<br/>
+		#div3 has no positioning (and no z-index), but has opacity, so the children of #div3 will be inside #div3's stacking context.<br/><br/>
+		
+		<h1>Firefox2</h1> 
+		For elements with opacity but no positioning, how they are sorted in relation to other positioned elements
+		is different in firefox2, when compared to firefox3+/safari3+. From my testing, it appears that 
+		firefox2 groups all of these above the float layer, but under the positioned layer. In firefox3+/safari3+
+		they are sorted within the positioned layer.<br/><br/>
+		
+		<h1>IE6/7/8</h1>
+		Note that in IE, opacity can only be applied to positioned elements.
+		So if you wanted opacity, you would have to apply positioning, which automatically gives it stacking context in IE.
+
+	</div>
+	
+	<script src="../dist/zviz.dist.js" type="text/javascript"></script>
+  </body>
+</html>

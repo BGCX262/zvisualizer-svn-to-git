@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+
+<title>zVisualizer Basic Demo</title>
+
+<style type="text/css">
+body { padding:0; margin: 0; }
+#mask {position: absolute; width: 800px; height:500px; opacity: 0.7; filter:alpha(opacity:70); background-color: black; z-index: 2; }
+#div1 {position: relative; top: 15px; left: 30px;  width:300px; height:200px; background-color: #0DFF00; z-index:5}
+#div2 {position: absolute; top: 25px; left: 120px; width:80px;  height:400px; background-color: #EF952C; z-index:8}
+#div3 {position: absolute; top: 40px; left: 30px;  width:200px; height: 50px; background-color: #9FFFA3; border: 1px dashed #222; z-index: 10; }
+#div4 {position: absolute; top: 70px; left: 40px;  width:200px; height: 50px; background-color: #9FFFA3; border: 1px dashed #222; z-index: 15;}
+#div5 {position: absolute; top: 250px; left:50px;  width:300px; height: 50px; background-color: red;     border: 1px solid #222; color:white; }
+#div6 {position: relative; top: 15px; left: 30px;  width:300px; height:50px;  background-color: #FFCFCF; border: 1px solid red;  color: black; z-index:25;}
+</style>
+</head>
+<body>
+
+<div id="mask"></div>
+<div id="div0">
+	<div id="div1">
+		#div1
+		<div id="div3">
+			#div3
+		</div>
+		<div id="div4">
+			#div4
+		</div>		
+	</div>
+	<div id="div2" >
+		#div2
+	</div>
+</div>
+<div id="div5">
+#div5
+	<div id="div6" >
+		#div6
+	</div>
+</div>
+
+<script src="../dist/zviz.dist.js" type="text/javascript"></script>
+	
+</body>
+<html>
